@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Flex, Image } from "@chakra-ui/react";
+import { Box, Heading, Text, Flex, Image, SimpleGrid } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import ArrowDown from "../assets/arrow_down.svg";
@@ -81,15 +81,24 @@ export default function Home() {
         </Box>
       </Flex>
       <Flex justifyContent="center" mt="5rem">
-        <Box w="70%" h="500px">
-          <Flex flexWrap="wrap">
-            <Image src={HTML} alt="" boxSize="10rem" />
-            <Image src={CSS} alt="" boxSize="10rem" />
-            <Image src={JS} alt="" boxSize="10rem" />
-            <Image src={React} alt="" boxSize="10rem" />
-            <Image src={NodeJS} alt="" boxSize="10rem" />
-            <Image src={Chakra} alt="" boxSize="10rem" />
-          </Flex>
+        <Box w="70%">
+          <SimpleGrid
+            columns={{ base: 2, lg: 3 }}
+            spacingY="2rem"
+            justifyItems="center"
+          >
+            <Image src={HTML} alt="html" w={{ base: "30%", lg: "40%" }} />
+            <Image src={CSS} alt="Santé" w={{ base: "30%", lg: "40%" }} />
+            <Image src={JS} alt="Bien être" w={{ base: "30%", lg: "30%" }} />
+            <Image src={React} alt="react" w={{ base: "30%", lg: "30%" }} />
+            <Image src={NodeJS} alt="nodejs" w={{ base: "30%", lg: "40%" }} />
+
+            <Image
+              src={Chakra}
+              alt="chakra ui"
+              w={{ base: "30%", lg: "60%" }}
+            />
+          </SimpleGrid>
         </Box>
       </Flex>
     </Box>
