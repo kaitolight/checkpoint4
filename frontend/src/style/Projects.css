@@ -75,3 +75,7 @@
       transform: translate(0);
     }
   }
+
+  .project-title {
+    color: #9BEAEC;
+  }

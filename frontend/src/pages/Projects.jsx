@@ -5,25 +5,42 @@ import {
   Text,
   Flex,
   Image,
-  Button,
   useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
 } from "@chakra-ui/react";
 import Header from "../components/Header";
+import ModalProject from "../components/ModalProject";
 
 import SquareProject from "../assets/square_project.png";
+import MovieFlix from "../assets/movieflix.png";
+import Habble from "../assets/habble.png";
 import "../style/Projects.css";
 
 export default function Projects() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen } = useDisclosure();
+
+  const fakeData = [
+    {
+      id: 1,
+      name: "The Square Project",
+      image: SquareProject,
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam placeat laboriosam error, hic perspiciatis mollitia voluptatem dolores ea ab. Quo sapiente atque culpa amet vero aperiam, dolorem quibusdam perferendis ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem voluptate ex aliquid voluptatum, et ratione a veritatis officiis vero possimus delectus, illo consequuntur asperiores quasi eius ullam? Sunt, repellendus eos!",
+    },
+    {
+      id: 2,
+      name: "Movieflix",
+      image: MovieFlix,
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam placeat laboriosam error, hic perspiciatis mollitia voluptatem dolores ea ab. Quo sapiente atque culpa amet vero aperiam, dolorem quibusdam perferendis ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem voluptate ex aliquid voluptatum, et ratione a veritatis officiis vero possimus delectus, illo consequuntur asperiores quasi eius ullam? Sunt, repellendus eos!",
+    },
+    {
+      id: 3,
+      name: "Habble",
+      image: Habble,
+      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam placeat laboriosam error, hic perspiciatis mollitia voluptatem dolores ea ab. Quo sapiente atque culpa amet vero aperiam, dolorem quibusdam perferendis ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem voluptate ex aliquid voluptatum, et ratione a veritatis officiis vero possimus delectus, illo consequuntur asperiores quasi eius ullam? Sunt, repellendus eos!",
+    },
+  ];
 
   return (
-    <Box filter={isOpen ? "blur(5px)" : "none"}>
+    <Box filter={isOpen ?? "blur(5px)"}>
       <Header />
 
       <Heading
@@ -51,94 +68,15 @@ export default function Projects() {
 
       <Box w="70%" ml="auto" mr="auto" mt="5rem">
         <Flex justifyContent="space-around" wrap="wrap">
-          <Flex flexDir="column" w="45%" alignItems="center">
-            <Box w="100%" m="1rem">
-              <Image src={SquareProject} alt="square project" />
-            </Box>
-            <Button
-              w="20%"
-              ml="1rem"
-              bgColor="#111111"
-              border="none"
-              textDecoration="none"
-              color="#E5E6E4"
-              fontSize="1.5rem"
-              _hover={{ bgColor: "#111111" }}
-              _focus={{ bgColor: "#111111" }}
-              onClick={onOpen}
-            >
-              Learn more about this project
-            </Button>
-            <Modal isOpen={isOpen} onClose={onClose}>
-              <ModalOverlay />
-              <ModalContent
-                maxWidth={{ base: "95%", lg: "50vw" }}
-                bgColor="#111111"
-              >
-                <ModalHeader
-                  bgColor="#E5E6E4"
-                  pt="30px"
-                  pb="40px"
-                  paddingX="50px"
-                >
-                  The Square Project
-                </ModalHeader>
-                <ModalCloseButton />
-                <ModalBody bgColor="#E5E6E4">Coucou</ModalBody>
-              </ModalContent>
-            </Modal>
-          </Flex>
-          <Flex flexDir="column" w="45%" alignItems="center">
-            <Box w="100%" m="1rem">
-              <Image src={SquareProject} alt="square project" />
-            </Box>
-            <Button
-              w="20%"
-              ml="1rem"
-              bgColor="#111111"
-              border="none"
-              _hover={{ bgColor: "#111111" }}
-              _focus={{ bgColor: "#111111" }}
-              textDecoration="none"
-              color="#9BEAEC"
-            >
-              Learn more
-            </Button>
-          </Flex>
-          <Flex flexDir="column" w="45%" alignItems="center">
-            <Box w="100%" m="1rem">
-              <Image src={SquareProject} alt="square project" />
-            </Box>
-            <Button
-              w="20%"
-              ml="1rem"
-              bgColor="#111111"
-              border="none"
-              _hover={{ bgColor: "#111111" }}
-              _focus={{ bgColor: "#111111" }}
-              textDecoration="none"
-              color="#9BEAEC"
-            >
-              Learn more
-            </Button>
-          </Flex>
-          <Flex flexDir="column" w="45%" alignItems="center">
-            <Box w="100%" m="1rem">
-              <Image src={SquareProject} alt="square project" />
-            </Box>
-            <Button
-              w="20%"
-              ml="1rem"
-              bgColor="#111111"
-              border="none"
-              _hover={{ bgColor: "#111111" }}
-              _focus={{ bgColor: "#111111" }}
-              textDecoration="none"
-              color="#9BEAEC"
-            >
-              Learn more
-            </Button>
-          </Flex>
+          {fakeData.map((pro, idx) => (
+            <Flex flexDir="column" w="45%" alignItems="center" key={pro.id}>
+              <Box w="100%" m="1rem">
+                <Image src={pro.image} alt="square project" />
+              </Box>
+              {/* eslint-disable-next-line react/no-array-index-key */}
+              <ModalProject key={idx} fakeData={fakeData} />
+            </Flex>
+          ))}
         </Flex>
       </Box>
     </Box>
