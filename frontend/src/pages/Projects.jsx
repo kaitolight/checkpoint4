@@ -1,12 +1,29 @@
 import React from "react";
-import { Box, Heading, Text, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Flex,
+  Image,
+  Button,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
 import Header from "../components/Header";
 
+import SquareProject from "../assets/square_project.png";
 import "../style/Projects.css";
 
 export default function Projects() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Box h="100vh">
+    <Box filter={isOpen ? "blur(5px)" : "none"}>
       <Header />
 
       <Heading
@@ -32,11 +49,96 @@ export default function Projects() {
         learn new technologies.
       </Text>
 
-      <Box w="70%" border="1px solid white" ml="auto" mr="auto" mt="5rem">
-        <Flex justifyContent="space-around">
-          <Box w="40%" height="300px" border="1px solid red" m="1rem">
-            Coucou
-          </Box>
+      <Box w="70%" ml="auto" mr="auto" mt="5rem">
+        <Flex justifyContent="space-around" wrap="wrap">
+          <Flex flexDir="column" w="45%" alignItems="center">
+            <Box w="100%" m="1rem">
+              <Image src={SquareProject} alt="square project" />
+            </Box>
+            <Button
+              w="20%"
+              ml="1rem"
+              bgColor="#111111"
+              border="none"
+              textDecoration="none"
+              color="#E5E6E4"
+              fontSize="1.5rem"
+              _hover={{ bgColor: "#111111" }}
+              _focus={{ bgColor: "#111111" }}
+              onClick={onOpen}
+            >
+              Learn more about this project
+            </Button>
+            <Modal isOpen={isOpen} onClose={onClose}>
+              <ModalOverlay />
+              <ModalContent
+                maxWidth={{ base: "95%", lg: "50vw" }}
+                bgColor="#111111"
+              >
+                <ModalHeader
+                  bgColor="#E5E6E4"
+                  pt="30px"
+                  pb="40px"
+                  paddingX="50px"
+                >
+                  The Square Project
+                </ModalHeader>
+                <ModalCloseButton />
+                <ModalBody bgColor="#E5E6E4">Coucou</ModalBody>
+              </ModalContent>
+            </Modal>
+          </Flex>
+          <Flex flexDir="column" w="45%" alignItems="center">
+            <Box w="100%" m="1rem">
+              <Image src={SquareProject} alt="square project" />
+            </Box>
+            <Button
+              w="20%"
+              ml="1rem"
+              bgColor="#111111"
+              border="none"
+              _hover={{ bgColor: "#111111" }}
+              _focus={{ bgColor: "#111111" }}
+              textDecoration="none"
+              color="#9BEAEC"
+            >
+              Learn more
+            </Button>
+          </Flex>
+          <Flex flexDir="column" w="45%" alignItems="center">
+            <Box w="100%" m="1rem">
+              <Image src={SquareProject} alt="square project" />
+            </Box>
+            <Button
+              w="20%"
+              ml="1rem"
+              bgColor="#111111"
+              border="none"
+              _hover={{ bgColor: "#111111" }}
+              _focus={{ bgColor: "#111111" }}
+              textDecoration="none"
+              color="#9BEAEC"
+            >
+              Learn more
+            </Button>
+          </Flex>
+          <Flex flexDir="column" w="45%" alignItems="center">
+            <Box w="100%" m="1rem">
+              <Image src={SquareProject} alt="square project" />
+            </Box>
+            <Button
+              w="20%"
+              ml="1rem"
+              bgColor="#111111"
+              border="none"
+              _hover={{ bgColor: "#111111" }}
+              _focus={{ bgColor: "#111111" }}
+              textDecoration="none"
+              color="#9BEAEC"
+            >
+              Learn more
+            </Button>
+          </Flex>
         </Flex>
       </Box>
     </Box>
