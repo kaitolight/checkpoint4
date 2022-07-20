@@ -1,9 +1,6 @@
 .cyber, .cyber::after {
-    font-size: 72px;
-    border: 0;
     color: #9BEAEC;
     letter-spacing: 3px;
-    outline: transparent;
     position: relative;
   }
 
@@ -77,4 +74,8 @@
       clip-path: var(--slice-1);
       transform: translate(0);
     }
+  }
+
+  .redirect {
+    color: #9BEAEC;
   }

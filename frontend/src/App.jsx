@@ -8,7 +8,7 @@ import "./App.css";
 
 function App() {
   return (
-    <Box bgColor="#111111" h="100vh">
+    <Box bgColor="#111111">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
