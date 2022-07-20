@@ -8,11 +8,11 @@ import "./App.css";
 
 function App() {
   return (
-    <Box bgColor="#FCFBF9" h="100vh">
+    <Box bgColor="#111111" h="100vh">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="Contact" element={<Contact />} />
+        <Route path="contact" element={<Contact />} />
       </Routes>
     </Box>
   );
