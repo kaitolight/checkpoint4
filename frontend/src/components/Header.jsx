@@ -8,8 +8,7 @@ export default function Header() {
       position="fixed"
       paddingX={{ base: "2%", lg: "5%" }}
       paddingY="30px"
-      //   bgColor="rgb(34, 34, 34)"
-      //   bgGradient="linear-gradient(to bottom, rgb(34, 34, 34),rgb(17, 17, 17))"
+      bgColor="rgb(17, 17, 17)"
       w="100%"
       zIndex="999"
       color="white"

@@ -8,7 +8,7 @@ import JS from "../assets/javascript.svg";
 import React from "../assets/react.svg";
 import NodeJS from "../assets/nodejs.svg";
 import Chakra from "../assets/chakra_ui.png";
-import "../Home.css";
+import "../style/Home.css";
 
 export default function Home() {
   return (
