@@ -1,6 +1,7 @@
 const fs = require("fs");
 const mysql = require("mysql2/promise");
 const path = require("path");
+const ItemManager = require("./ItemManager");
 
 const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
@@ -28,7 +29,7 @@ const models = fs
     const Manager = require(path.join(__dirname, file));
 
     // eslint-disable-next-line no-param-reassign
-    acc[Manager.table] = new Manager(pool, Manager.table);
+    acc[Manager.table] = new ItemManager(pool, Manager.table);
 
     return acc;
   }, {});
