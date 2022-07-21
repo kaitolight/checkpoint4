@@ -12,7 +12,7 @@ import "../style/Home.css";
 
 export default function Home() {
   return (
-    <Box>
+    <Box bgColor="#111111">
       <Box bgGradient="linear-gradient(to bottom, rgb(34, 34, 34),rgb(17, 17, 17))">
         <Heading
           as="h1"

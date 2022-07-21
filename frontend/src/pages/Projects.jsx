@@ -40,7 +40,7 @@ export default function Projects() {
   ];
 
   return (
-    <Box filter={isOpen ?? "blur(5px)"}>
+    <Box filter={isOpen ?? "blur(5px)"} bgColor="#111111">
       <Header />
 
       <Heading
