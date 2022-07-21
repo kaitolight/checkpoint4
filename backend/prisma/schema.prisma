@@ -11,11 +11,13 @@ datasource db {
 }
 
 model user {
-  id       Int       @id @default(autoincrement())
-  pseudo   String    @db.VarChar(100)
-  password String    @db.VarChar(255)
-  isAdmin  Boolean   @default(false)
-  project  project[]
+  id             Int       @id @default(autoincrement())
+  pseudo         String    @db.VarChar(100)
+  email          String    @unique @db.VarChar(100)
+  hashedPassword String    @db.VarChar(255)
+  role           String    @db.VarChar(100)
+  isAdmin        Boolean   @default(false)
+  project        project[]
 }
 
 model project {
