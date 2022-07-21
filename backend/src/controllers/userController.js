@@ -40,6 +40,7 @@ exports.login = async (req, res) => {
         .json({
           message: "Connexion réussie",
           type: userData.role,
+          id: userData.id,
         });
     } else {
       res.status(userData.code).json({ message: userData.message });
