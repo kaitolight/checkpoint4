@@ -88,7 +88,7 @@ const login = async (userData) => {
   return { ...user, id, accessToken };
 };
 
-module.export = {
+module.exports = {
   createOne,
   findOne,
   updateOne,
