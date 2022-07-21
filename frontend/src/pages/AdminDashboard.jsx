@@ -41,12 +41,6 @@ function AdminDashboard() {
     currentProjects();
   }, []);
 
-  useEffect(() => {
-    setModalName(getProjects.name);
-    setModalDesc(getProjects.description);
-    setModalImage(getProjects.image);
-  }, [getProjects]);
-
   return (
     <Box bgColor="#111111" h="100vh">
       <Flex w="100%" justifyContent="space-around">
@@ -118,6 +112,24 @@ function AdminDashboard() {
                             mb="1rem"
                             onChange={(e) => setModalImage(e.target.value)}
                           />
+                          <Button
+                            bgColor="black"
+                            color="white"
+                            _hover={{ bgColor: "black" }}
+                            _focus={{ bgColor: "black" }}
+                            onClick={() =>
+                              axios.put(
+                                `http://localhost:5000/api/user/${userId}/project/${pro.id}`,
+                                {
+                                  name: modalName,
+                                  description: modalDesc,
+                                  image: modalImage,
+                                }
+                              )
+                            }
+                          >
+                            Valider
+                          </Button>
                         </FormControl>
                       </ModalBody>
                     </ModalContent>
