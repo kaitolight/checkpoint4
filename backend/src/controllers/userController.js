@@ -1,11 +1,4 @@
-/* eslint-disable no-unused-vars */
-const { Prisma } = require("@prisma/client");
-const {
-  hashPassword,
-  verifyPassword,
-  verifyHash,
-} = require("../helpers/argon");
-const { verifyAccessToken } = require("../helpers/jwt");
+const { hashPassword } = require("../helpers/argon");
 const { validateUser } = require("../utils/validate");
 const user = require("../models/UserManager");
 
@@ -29,4 +22,56 @@ exports.createOne = async (req, res) => {
   });
 
   res.status(201).json(message);
+};
+
+exports.login = async (req, res) => {
+  const rememberTime = () => {
+    return 86400000;
+  };
+  try {
+    const userData = await user.login(req.body);
+    if (!userData.code) {
+      res
+        .status(200)
+        .cookie("userToken", userData.accessToken, {
+          httpOnly: false,
+          expires: new Date(Date.now() + rememberTime()),
+        })
+        .json({
+          message: "Connexion réussie",
+          type: userData.role,
+        });
+    } else {
+      res.status(userData.code).json({ message: userData.message });
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+};
+
+exports.getAll = async (req, res) => {
+  const users = await user.findAll();
+  res.status(200).send({ users });
+};
+
+exports.getOne = async (req, res) => {
+  const userId = parseInt(req.params.userId, 10);
+  const oneUser = await user.findOne(userId);
+  res.status(200).send({ oneUser });
+};
+
+exports.updateOne = async (req, res) => {
+  const userId = parseInt(req.params.userId, 10);
+
+  const message = await user.updateOne(userId, req.body);
+
+  res.status(200).json(message);
+};
+
+exports.deleteOne = async (req, res) => {
+  const userId = parseInt(req.params.userId, 10);
+
+  const message = await user.deleteOne(userId);
+
+  res.status(200).json(message);
 };

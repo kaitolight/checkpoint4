@@ -24,6 +24,14 @@ const findOne = async (userId) => {
   }
 };
 
+const findAll = async () => {
+  try {
+    return await prisma.user.findMany();
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
 const findOneByEmail = async (userEmail) => {
   try {
     return await prisma.user.findUnique({
@@ -91,6 +99,7 @@ const login = async (userData) => {
 module.exports = {
   createOne,
   findOne,
+  findAll,
   updateOne,
   deleteOne,
   findOneByEmail,
