@@ -1,6 +1,6 @@
 const { hashPassword } = require("../helpers/argon");
 const { validateUser } = require("../utils/validate");
-const user = require("../models/UserManager");
+const user = require("../models/user");
 
 exports.createOne = async (req, res) => {
   const { pseudo, email, password, role } = req.body;

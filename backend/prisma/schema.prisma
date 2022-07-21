@@ -24,6 +24,7 @@ model project {
   id          Int    @id @default(autoincrement())
   userId      Int
   name        String @db.VarChar(255)
+  image       String @db.VarChar(255)
   description String @db.Text
   fk_user_id  user   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
