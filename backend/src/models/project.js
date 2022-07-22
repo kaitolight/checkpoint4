@@ -31,6 +31,16 @@ exports.getOneProject = async (userId, projectId) => {
   }
 };
 
+exports.getOneProjectWithoutId = async (projectId) => {
+  try {
+    return await prisma.project.findUnique({
+      where: { id: projectId },
+    });
+  } finally {
+    await prisma.$disconnect();
+  }
+};
+
 exports.updateOneProject = async (projectId, data) => {
   try {
     const project = await prisma.project.update({

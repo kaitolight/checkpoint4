@@ -63,7 +63,11 @@ export default function Home() {
         alignItems={{ base: "center", lg: "none" }}
       >
         <Box w={{ base: "95%", lg: "70%" }} h="auto" color="white" mt="5rem">
-          <Flex justifyContent="space-around">
+          <Flex
+            flexDir={{ base: "column", lg: "row" }}
+            justifyContent={{ base: "none", lg: "space-around" }}
+            alignItems={{ base: "center", lg: "none" }}
+          >
             <Box w="300px" h="500px" border="1px solid white" />
             <Box w={{ base: "90%", lg: "49.5%" }} p="1rem" color="#E5E6E4">
               <Heading as="h2" color="#9BEAEC" pb="1rem">
