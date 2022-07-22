@@ -52,6 +52,17 @@ exports.getOne = async (req, res) => {
   }
 };
 
+exports.getOneWithoutId = async (req, res) => {
+  const projectId = parseInt(req.params.projectId, 10);
+  try {
+    const oneProject = await project.getOneProjectWithoutId(projectId);
+    return res.status(201).send(oneProject);
+  } catch (e) {
+    console.error(e);
+    return res.status(500).json({ error: "Problème de lecture du projet" });
+  }
+};
+
 exports.updateOne = async (req, res) => {
   const userId = parseInt(req.params.userId, 10);
   const projectId = parseInt(req.params.projectId, 10);

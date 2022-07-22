@@ -1,14 +1,7 @@
 import React from "react";
-import {
-  Box,
-  Heading,
-  Text,
-  Flex,
-  Image,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { Box, Heading, Text, Flex, Image, Button } from "@chakra-ui/react";
 import Header from "../components/Header";
-import ModalProject from "../components/ModalProject";
 
 import SquareProject from "../assets/square_project.png";
 import MovieFlix from "../assets/movieflix.png";
@@ -16,23 +9,23 @@ import Habble from "../assets/habble.png";
 import "../style/Projects.css";
 
 export default function Projects() {
-  const { isOpen } = useDisclosure();
+  const navigate = useNavigate();
 
   const fakeData = [
     {
-      id: 1,
+      id: 5,
       name: "The Square Project",
       image: SquareProject,
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam placeat laboriosam error, hic perspiciatis mollitia voluptatem dolores ea ab. Quo sapiente atque culpa amet vero aperiam, dolorem quibusdam perferendis ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem voluptate ex aliquid voluptatum, et ratione a veritatis officiis vero possimus delectus, illo consequuntur asperiores quasi eius ullam? Sunt, repellendus eos!",
     },
     {
-      id: 2,
+      id: 6,
       name: "Movieflix",
       image: MovieFlix,
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam placeat laboriosam error, hic perspiciatis mollitia voluptatem dolores ea ab. Quo sapiente atque culpa amet vero aperiam, dolorem quibusdam perferendis ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem voluptate ex aliquid voluptatum, et ratione a veritatis officiis vero possimus delectus, illo consequuntur asperiores quasi eius ullam? Sunt, repellendus eos!",
     },
     {
-      id: 3,
+      id: 7,
       name: "Habble",
       image: Habble,
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam placeat laboriosam error, hic perspiciatis mollitia voluptatem dolores ea ab. Quo sapiente atque culpa amet vero aperiam, dolorem quibusdam perferendis ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem voluptate ex aliquid voluptatum, et ratione a veritatis officiis vero possimus delectus, illo consequuntur asperiores quasi eius ullam? Sunt, repellendus eos!",
@@ -40,7 +33,7 @@ export default function Projects() {
   ];
 
   return (
-    <Box filter={isOpen ?? "blur(5px)"} bgColor="#111111">
+    <Box bgColor="#111111">
       <Header />
 
       <Heading
@@ -54,7 +47,7 @@ export default function Projects() {
         My <span className="project">projects</span>
       </Heading>
       <Text
-        w="50%"
+        w={{ base: "100%", md: "90%", lg: "50%" }}
         fontSize={{ base: "xl", md: "2xl" }}
         color="#E5E6E4"
         ml={{ base: "none", md: "2rem", lg: "5rem" }}
@@ -66,15 +59,32 @@ export default function Projects() {
         learn new technologies.
       </Text>
 
-      <Box w="70%" ml="auto" mr="auto" mt="5rem">
+      <Box w={{ base: "100%", lg: "70%" }} ml="auto" mr="auto" mt="5rem">
         <Flex justifyContent="space-around" wrap="wrap">
-          {fakeData.map((pro, idx) => (
-            <Flex flexDir="column" w="45%" alignItems="center" key={pro.id}>
+          {fakeData.map((pro) => (
+            <Flex
+              flexDir="column"
+              w={{ base: "95%", lg: "45%" }}
+              alignItems="center"
+              key={pro.id}
+            >
               <Box w="100%" m="1rem">
                 <Image src={pro.image} alt="square project" />
               </Box>
-              {/* eslint-disable-next-line react/no-array-index-key */}
-              <ModalProject key={idx} fakeData={fakeData} />
+              <Button
+                w="20%"
+                ml="1rem"
+                bgColor="#111111"
+                border="none"
+                textDecoration="none"
+                color="#E5E6E4"
+                fontSize="1.5rem"
+                _hover={{ bgColor: "#111111" }}
+                _focus={{ bgColor: "#111111" }}
+                onClick={() => navigate(`/projects/${pro.id}`)}
+              >
+                Learn about {pro.name}
+              </Button>
             </Flex>
           ))}
         </Flex>

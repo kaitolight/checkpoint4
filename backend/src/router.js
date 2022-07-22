@@ -19,6 +19,7 @@ router.delete("/user/:userId", userController.deleteOne);
 router.post("/user/:userId/project", projectController.createOne);
 router.get("/user/:userId/projects", projectController.getAll);
 router.get("/user/:userId/project/:projectId", projectController.getOne);
+router.get("/front/project/:projectId", projectController.getOneWithoutId);
 router.put("/user/:userId/project/:projectId", projectController.updateOne);
 router.delete("/user/:userId/project/:projectId", projectController.deleteOne);
 
