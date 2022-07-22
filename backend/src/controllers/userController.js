@@ -50,6 +50,10 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.logout = (req, res) => {
+  res.clearCookie("userToken").sendStatus(200);
+};
+
 exports.getAll = async (req, res) => {
   const users = await user.findAll();
   res.status(200).send({ users });
