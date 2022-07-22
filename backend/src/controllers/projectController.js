@@ -68,11 +68,11 @@ exports.updateOne = async (req, res) => {
   }
 
   try {
-    const updateProject = await project.updateOneProject(projectId);
+    const updateProject = await project.updateOneProject(projectId, req.body);
     return res.status(201).send(updateProject);
   } catch (e) {
     console.error(e);
-    return res.status(500).json({ error: "Problème de lecture des projets" });
+    return res.status(500).json({ error: "Problème de lecture du projet" });
   }
 };
 

@@ -8,6 +8,7 @@ const router = express.Router();
 // Routes for user
 router.post("/user/register", userController.createOne);
 router.post("/user/login", userController.login);
+router.get("/user/logout", userController.logout);
 router.get("/users", userController.getAll);
 router.get("/user/:userId", userController.getOne);
 router.put("/user/:userId", userController.updateOne);

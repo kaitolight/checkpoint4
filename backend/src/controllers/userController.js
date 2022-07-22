@@ -40,6 +40,7 @@ exports.login = async (req, res) => {
         .json({
           message: "Connexion réussie",
           type: userData.role,
+          id: userData.id,
         });
     } else {
       res.status(userData.code).json({ message: userData.message });
@@ -47,6 +48,10 @@ exports.login = async (req, res) => {
   } catch (error) {
     console.warn(error);
   }
+};
+
+exports.logout = (req, res) => {
+  res.clearCookie("userToken").sendStatus(200);
 };
 
 exports.getAll = async (req, res) => {
